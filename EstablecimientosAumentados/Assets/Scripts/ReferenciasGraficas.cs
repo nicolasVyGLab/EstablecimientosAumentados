@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ReferenciasGraficas : MonoBehaviour {
 
 	public Text titulo,descipcion, infoComoSoy,infoComoMeRelaciono,infoComoMeAdapto,infoSabiasQue, juegoPregunta,juegoRespuesta;
-	public Text juegoOpciones;
+	public Text juegoOpciones,informacionPosta;
 	public Image juegoFoto;
 	//public string [] fotos;
 	//public string [] videos;
@@ -17,7 +17,7 @@ public class ReferenciasGraficas : MonoBehaviour {
 
 	public void matchear(InformacionDelObjeto info){
 		titulo.text = info.transform.name;
-		//descipcion.text = info.descipcion;
+		informacionPosta.text = info.descipcion;
 		infoComoSoy.text = info.infoComoSoy;
 		infoComoMeAdapto.text = info.infoComoMeAdapto;
 		infoComoMeRelaciono.text = info.infoComoMeRelaciono;

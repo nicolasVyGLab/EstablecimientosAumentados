@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class ControladorObjetoEnElMundo : MonoBehaviour {
 
-	public static int LIMITE1=200;
+	public static int LIMITE1=20000;
 	public static int LIMITE2=30;
 //	public static int LIMITE3=15;
 
