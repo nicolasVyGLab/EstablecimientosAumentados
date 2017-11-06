@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class BotonAbrePanel : MonoBehaviour {
 
-	public GameObject panel;
+	public GameObject panel,panelACerrar;
 
 	public void abrirPanel(){
 		panel.SetActive (true);
+		if (panelACerrar != null)
+			panelACerrar.SetActive (false);
 	}
 }

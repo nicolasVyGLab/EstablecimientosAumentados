@@ -1,0 +1,27 @@
+newmtl BottomA_m
+Kd 1 1 1
+map_Kd BottomA.bmp.png
+newmtl cDonutBackNorm_m
+Kd 1 1 1
+map_Kd cDonutBackNorm.bmp.png
+newmtl cDonutDoorDNorm_m
+Kd 1 1 1
+map_Kd cDonutDoorDNorm.bmp.png
+newmtl cDonutDoorPNorm_m
+Kd 1 1 1
+map_Kd cDonutDoorPNorm.bmp.png
+newmtl cDonutHoodNorm_m
+Kd 1 1 1
+map_Kd cDonutHoodNorm.bmp.png
+newmtl cDonutSide_m
+Kd 1 1 1
+map_Kd cDonutSide.bmp.png
+newmtl cdonutWheel_m
+Kd 1 1 1
+map_Kd cdonutWheel.bmp.png
+newmtl WindsheildT_m
+Kd 1 1 1
+map_Kd WindsheildT.bmp.png
+newmtl donut_m
+Kd 1 1 1
+map_Kd donut.bmp.png

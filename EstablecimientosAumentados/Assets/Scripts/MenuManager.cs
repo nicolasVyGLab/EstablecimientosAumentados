@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour {
 
-	public GameObject panelBreveDescripcion, menuInteracciones, menuInformacion,menuMultimedia,menuJuego,panelMapa;
+	public GameObject panelBreveDescripcion, menuInteracciones, menuInformacion;
 
 
 	public void activarPanelBreveDescripcion(){
@@ -32,38 +32,15 @@ public class MenuManager : MonoBehaviour {
 		menuInformacion.SetActive (false);
 	}
 
-	public void activarMenuMultimedia(){
-		menuMultimedia.SetActive (true);
-	}
-
-	public void desactivarMenuMultimedia(){
-		menuMultimedia.SetActive (false);
-	}
-
-	public void activarMenuJuego(){
-		menuJuego.SetActive (true);
-	}
-
-	public void desactivarMenuJuego(){
-		menuJuego.SetActive (false);
-	}
-
-	public void activarPanelMapa(){
-		panelMapa.SetActive (true);
-	}
 
 	public void desactivarMenues(){
 		desactivarMenuInformacion ();
-		desactivarMenuMultimedia ();
-		desactivarMenuJuego ();
-		//Debug.Log ("hola");
 	}
 
 
 
 	public void setearDatos(InformacionDelObjeto info){
 		GetComponent<ReferenciasGraficas> ().matchear (info);
-		GetComponent<ReferenciasGraficas> ().checkearNulos (info);
 	}
 
 	public void setearDescripcionNivel2(string d){

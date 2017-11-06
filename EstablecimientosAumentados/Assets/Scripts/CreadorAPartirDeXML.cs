@@ -8,7 +8,7 @@ public class CreadorAPartirDeXML : MonoBehaviour {
 
 	public GameObject objetoPrefab;
 	public GameObject persona,menu,manager;
-	public Sprite imagenPlanta, imagenAnimal,imagenHombre,imagenPaisaje;
+	public Sprite imagenUns,imagenAulas,imagenOtros;
 	public string xml;
 
 	// Use this for initialization
@@ -50,37 +50,7 @@ public class CreadorAPartirDeXML : MonoBehaviour {
 				//asigno la descripcion
 				if (puntoDeInteres.SelectSingleNode ("Descripcion") != null)
 					nuevoPunto.GetComponent<InformacionDelObjeto> ().descipcion = puntoDeInteres.SelectSingleNode ("Descripcion").InnerText;
-				//asigno como soy
-				if (puntoDeInteres.SelectSingleNode ("ComoSoy") != null)
-					nuevoPunto.GetComponent<InformacionDelObjeto> ().infoComoSoy = puntoDeInteres.SelectSingleNode ("ComoSoy").InnerText;
-				//asigmo como me adapto
-				if (puntoDeInteres.SelectSingleNode ("ComoMeAdapto") != null)
-					nuevoPunto.GetComponent<InformacionDelObjeto> ().infoComoMeAdapto = puntoDeInteres.SelectSingleNode ("ComoMeAdapto").InnerText;
-				//asigno como me relaciono
-				if (puntoDeInteres.SelectSingleNode ("ComoMeRelaciono") != null)
-					nuevoPunto.GetComponent<InformacionDelObjeto> ().infoComoMeRelaciono = puntoDeInteres.SelectSingleNode ("ComoMeRelaciono").InnerText;
-				//asigno sabias que
-				if (puntoDeInteres.SelectSingleNode ("SabiasQue") != null)
-					nuevoPunto.GetComponent<InformacionDelObjeto> ().infoSabiasQue = puntoDeInteres.SelectSingleNode ("SabiasQue").InnerText;
-
-				if (puntoDeInteres.SelectSingleNode ("Juego") != null) {
-					//asigno juego pregunta
-					nuevoPunto.GetComponent<InformacionDelObjeto> ().juegoPregunta = puntoDeInteres.SelectSingleNode ("Juego").SelectSingleNode ("Pregunta").InnerText;
-					//asigno juego respuesta
-					nuevoPunto.GetComponent<InformacionDelObjeto> ().juegoRespuesta = puntoDeInteres.SelectSingleNode ("Juego").SelectSingleNode ("Respuesta").InnerText;
-					//asigno la foto del juego
-					if (puntoDeInteres.SelectSingleNode ("Juego").SelectSingleNode ("Foto") != null)
-						nuevoPunto.GetComponent<InformacionDelObjeto> ().juegoFoto = puntoDeInteres.SelectSingleNode ("Juego").SelectSingleNode ("Foto").InnerText;
-					//asigno las opciones de la pregunta
-					int cantidadDeOpciones = puntoDeInteres.SelectSingleNode ("Juego").SelectSingleNode ("Opciones").ChildNodes.Count;
-					string[] opciones = new string[cantidadDeOpciones];
-					int pos = 0;
-					foreach (XmlNode op in puntoDeInteres.SelectSingleNode("Juego").SelectSingleNode("Opciones").ChildNodes) {
-						opciones [pos] = op.InnerText;
-						pos++;
-					}
-					nuevoPunto.GetComponent<InformacionDelObjeto> ().juegoOpciones = opciones;
-				}
+				
 
 				//asigno fotos
 				if (puntoDeInteres.SelectSingleNode ("Fotos") != null) {
@@ -94,33 +64,6 @@ public class CreadorAPartirDeXML : MonoBehaviour {
 					nuevoPunto.GetComponent<InformacionDelObjeto> ().fotos = opcionesFotos;
 				}
 
-				//asigno videos
-				if (puntoDeInteres.SelectSingleNode ("Videos") != null) {
-					int cantidadVideos = puntoDeInteres.SelectSingleNode ("Videos").ChildNodes.Count;
-					string[] opcionesVideos = new string[cantidadVideos];
-					int posV = 0;
-					foreach (XmlNode op in puntoDeInteres.SelectSingleNode("Videos").ChildNodes) {
-						opcionesVideos [posV] = op.InnerText;
-						posV++;
-					}
-					nuevoPunto.GetComponent<InformacionDelObjeto> ().videos = opcionesVideos;
-				}
-
-				//asigno links
-				if (puntoDeInteres.SelectSingleNode ("Links") != null) {
-					int cantidadLinks = puntoDeInteres.SelectSingleNode ("Links").ChildNodes.Count;
-					string[] opcionesLinksNombres = new string[cantidadLinks];
-					string[] opcionesLinksURLs = new string[cantidadLinks];
-					int posL = 0;
-					foreach (XmlNode link in puntoDeInteres.SelectSingleNode("Links").ChildNodes) {
-						opcionesLinksNombres [posL] = link.SelectSingleNode ("Nombre").InnerText;
-						opcionesLinksURLs [posL] = link.SelectSingleNode ("Url").InnerText;
-						posL++;
-					}
-					nuevoPunto.GetComponent<InformacionDelObjeto> ().linksNombres = opcionesLinksNombres;
-					nuevoPunto.GetComponent<InformacionDelObjeto> ().linksURLs = opcionesLinksURLs;
-				}
-
 				//asigno coordanadas GPS
 				if (puntoDeInteres.SelectSingleNode ("CoordenadaGPS") != null) {
 					nuevoPunto.GetComponent<PosicionGPS> ().lat = double.Parse (puntoDeInteres.SelectSingleNode ("CoordenadaGPS").SelectSingleNode ("Latitud").InnerText);
@@ -130,16 +73,13 @@ public class CreadorAPartirDeXML : MonoBehaviour {
 				//asigno iconos de categoria
 				if (puntoDeInteres.SelectSingleNode ("Categoria") != null) {
 					string categoria = puntoDeInteres.SelectSingleNode ("Categoria").InnerText;
-					if (categoria.Equals ("Hombre")) {
-						nuevoPunto.transform.Find ("Nivel2").Find ("Button").GetComponent<Image> ().sprite = imagenHombre;
-					} else if (categoria.Equals ("Animal")) {
-						nuevoPunto.transform.Find ("Nivel2").Find ("Button").GetComponent<Image> ().sprite = imagenAnimal;
+					if (categoria.Equals ("UNS")) {
+						nuevoPunto.transform.Find ("Nivel2").Find ("Button").GetComponent<Image> ().sprite = imagenUns;
+					} else if (categoria.Equals ("Aulas")) {
+						nuevoPunto.transform.Find ("Nivel2").Find ("Button").GetComponent<Image> ().sprite = imagenAulas;
 					}
-					else if (categoria.Equals ("Paisaje")) {
-						nuevoPunto.transform.Find ("Nivel2").Find ("Button").GetComponent<Image> ().sprite = imagenPaisaje;
-					}
-					else {
-						nuevoPunto.transform.Find ("Nivel2").Find ("Button").GetComponent<Image> ().sprite = imagenPlanta;
+					else { //otros
+						nuevoPunto.transform.Find ("Nivel2").Find ("Button").GetComponent<Image> ().sprite = imagenOtros;
 					}
 				}
 
