@@ -71,6 +71,13 @@ namespace Vuforia
             Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
             Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 
+			Canvas[] canvasObjects = GetComponentsInChildren<Canvas>();
+
+			foreach(Canvas canvas in canvasObjects)
+			{
+				canvas.enabled = true;
+			}
+
             // Enable rendering:
             foreach (Renderer component in rendererComponents)
             {
@@ -91,6 +98,13 @@ namespace Vuforia
         {
             Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
             Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
+
+			Canvas[] canvasObjects = GetComponentsInChildren<Canvas>();
+
+			foreach(Canvas canvas in canvasObjects)
+			{
+				canvas.enabled = false;
+			}
 
             // Disable rendering:
             foreach (Renderer component in rendererComponents)

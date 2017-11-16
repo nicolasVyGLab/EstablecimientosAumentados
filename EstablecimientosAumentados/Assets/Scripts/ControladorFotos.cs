@@ -12,7 +12,7 @@ public class ControladorFotos : MonoBehaviour {
 
 	public void iniciar(){
 		contador = 0;
-		//Debug.Log (fotos [contador]);
+		Debug.Log (fotos [contador]);
 		imagen.sprite = catalogoFotos.transform.Find (fotos [contador]).GetComponent<Image> ().sprite;
 	}
 
